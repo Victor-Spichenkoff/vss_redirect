@@ -1,9 +1,11 @@
 import type { Request, Response } from "express"
 import { endpointToProjectUrl } from "../data/endpointToProjectUrl.js"
+import { sendTelegramMensage } from "../libs/telegram.js"
+import { isRedirectEndpoint } from "../types/endpoints.js"
 
 export const redirectController = async (req: Request, res: Response) => {
     const { projectName } = req.params
-    if (!projectName || typeof projectName != "string")
+    if (!projectName || !isRedirectEndpoint(projectName))
         return res.send("INVALID URL")
 
     const dest = endpointToProjectUrl[projectName]
@@ -16,20 +18,11 @@ export const redirectController = async (req: Request, res: Response) => {
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress
     const query = req.query
 
-    // Enviar notificação para você (ex: Telegram)
-    //   await fetch(`https://api.telegram.org/bot<TOKEN>/sendMessage`, {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       chat_id: "<SEU_CHAT_ID>",
-    //       text: `Acesso em ${projectName}\nIP: ${ip}\nQuery: ${JSON.stringify(query)}`
-    //     }),
-    //   })
+    sendTelegramMensage("PROJECT: " + projectName)
 
     console.log(ip)
     console.log(query)
 
-    // Redirecionar usuário
 
     if(process.env.NO_REDIRECT)
         return res.send(dest)
