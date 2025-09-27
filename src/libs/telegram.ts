@@ -6,14 +6,12 @@ async function sendTelegramMensage(message: string): Promise<void> {
   if(process.env.NOT_SEND_TO_TELEGRAM=="true") 
     return
 
-  const chatId = '1139085287'
-
   const apiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`
 
 
   try {
     const response = await axios.post(apiUrl, {
-        chat_id: chatId,
+        chat_id: process.env.TELEGRAM_CHAT_ID,
         text: message,
       });
     // const responseData = await response.data
