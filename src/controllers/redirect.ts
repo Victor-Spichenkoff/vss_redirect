@@ -2,7 +2,7 @@ import type { Request, Response } from "express"
 import { endpointToProjectUrl } from "../data/endpointToProjectUrl.js"
 import { sendTelegramMensage } from "../libs/telegram.js"
 import { isRedirectEndpoint } from "../types/endpoints.js"
-import { getRequesterId } from "../libs/ip.js"
+import { getInfosFromIp, getRequesterId } from "../libs/ip.js"
 import { messageFormatter } from "../utils/messageFormatter.js"
 import { telegramSigns } from "../data/telegramSign.js"
 import { endpointToProjectName } from "../data/endpointToName.js"
@@ -29,15 +29,18 @@ export const redirectController = async (req: Request, res: Response) => {
     else if (query.isPort != undefined)
         header = telegramSigns.redirectFromPort
 
+    const ipInfos = await getInfosFromIp(ip ?? "")
+
     const message = messageFormatter.formatRedirect(
         header, 
         endpointToProjectName[projectName], 
-        ip ?? "NONE")
+        ip ?? "NONE",
+        `${ipInfos?.city}, ${ipInfos?.country_name} `)
 
     sendTelegramMensage(message)
     console.log(message)
 
-    if (process.env.NO_REDIRECT)
+    if (process.env.NO_REDIRECT == "true")
         return res.send(dest)
     res.redirect(dest)
 }
