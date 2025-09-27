@@ -1,6 +1,6 @@
 import type { RedirectEndpoints } from "../types/endpoints.js";
 
-export const projectFroendpointToNamemUrl: Record<RedirectEndpoints, string> = {
+export const endpointToProjectName: Record<RedirectEndpoints, string> = {
     myPortfolioEn: "MY Portfolio [EN]",
     myPortfolioPt: "MY Portfolio [BR]",
     myPortfolioEs: "MY Portfolio [ES]",

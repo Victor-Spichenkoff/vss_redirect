@@ -3,7 +3,7 @@ import axios from 'axios'
 const telegramBotToken = '6746265132:AAHesfWPU4GGxYyWqnbDZSriNnkFcbRFi0E'
 
 async function sendTelegramMensage(message: string): Promise<void> {
-  if(process.env.SEND_TO_TELEGRAM=="false") 
+  if(process.env.NOT_SEND_TO_TELEGRAM=="true") 
     return
 
   const chatId = '1139085287'
