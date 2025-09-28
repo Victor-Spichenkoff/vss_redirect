@@ -32,13 +32,12 @@ export const redirectController = async (req: Request, res: Response) => {
     const ipInfos = await getInfosFromIp(ip ?? "")
 
     const message = messageFormatter.formatRedirect(
-        header, 
+        header,
         endpointToProjectName[projectName], 
         ip ?? "NONE",
         `${ipInfos?.city}, ${ipInfos?.country_name} `)
 
     sendTelegramMensage(message)
-    console.log(message)
 
     if (process.env.NO_REDIRECT == "true")
         return res.send(dest)

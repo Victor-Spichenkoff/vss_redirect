@@ -1,7 +1,7 @@
 import type { Request } from "express"
 import os from "os"
 import type { IpApiResponse } from "../types/ip.js"
-import axios, { Axios, AxiosError, isAxiosError } from "axios"
+import axios, { isAxiosError } from "axios"
 
 
 export const getRequesterId = (req: Request) => {
@@ -41,6 +41,20 @@ export const getInfosFromIp = async (ip: string): Promise<IpApiResponse | null> 
     const res = await axios(`https://ipinfo.io/${encodeURIComponent(ip)}/json`)
 
     const data = res.data
+
+    if(data.bogon)
+      return {
+      ip: data.ip,
+      city: "[ HOME ]",
+      region: data.region,
+      country: "BR",
+      country_name: "Brasil",
+      latitude: data.latitude,
+      longitude: data.longitude,
+      timezone: data.timezone,
+      org: data.org,
+    }
+    console.log(data)
 
     return {
       ip: data.ip,

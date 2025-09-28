@@ -22,5 +22,5 @@ const port = process.env.PORT || 2006
 
 app.listen(port, ()=> {
     console.log(`Runnig on: http://localhost:${port}`)
-    console.log(`${getLocalNetworkIp()}:${port}`)
+    console.log(`http://${getLocalNetworkIp()}:${port}`)
 })
