@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import { redirectController } from '../controllers/redirect.js';
+import { alertControleer } from '../controllers/alert.js';
 const router = Router();
 
 router.get("/", (req, res) => res.send("Hello!"))
 router.get("/test", (req, res) => res.send("Testado!"))
 
-// /redirect/test
-router.get('/redirect/:projectName', redirectController)
+router.get('/alert/:projectName', alertControleer)
 
-// router.get('/alert')
+// /test
+router.get('/:projectName', redirectController)
 
 export default router

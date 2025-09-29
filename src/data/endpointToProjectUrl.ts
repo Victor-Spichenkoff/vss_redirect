@@ -11,5 +11,5 @@ export const endpointToProjectUrl: Record<RedirectEndpoints, string> = {
     ticTacToe: "https://tic-tac-toe-online-six.vercel.app/",
     vssExpress: "https://www.npmjs.com/package/vss-express",
     portfioShare: "https://portfolio-oqz8.vercel.app/auth",
-    test: "https://google.com"
+    tests: "https://google.com"
 }

@@ -42,19 +42,11 @@ export const getInfosFromIp = async (ip: string): Promise<IpApiResponse | null> 
 
     const data = res.data
 
-    if(data.bogon)
-      return {
-      ip: data.ip,
-      city: "[ HOME ]",
-      region: data.region,
-      country: "BR",
-      country_name: "Brasil",
-      latitude: data.latitude,
-      longitude: data.longitude,
-      timezone: data.timezone,
-      org: data.org,
+    if (data.bogon) {
+      data.city = "[ HOME ]"
+      data.country = "BR"
+      data.country_name = "Brasil"
     }
-    console.log(data)
 
     return {
       ip: data.ip,

@@ -9,7 +9,7 @@ export const endpointToProjectName: Record<RedirectEndpoints, string> = {
     paginationApi: "Pagination API",
     portfioShare: "Portfolio Share",
     serverMaintenance: "Server Maintenance",
-    test: "TEST",
+    tests: "TEST",
     ticTacToe: "Online Tic Tac Toe",
     vssExpress: "VSS Express",
 }

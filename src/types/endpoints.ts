@@ -9,7 +9,7 @@ export const redirectEndpoints = [
     "ticTacToe",
     "vssExpress",
     "portfioShare",
-    "test"  
+    "tests"  
 ] as const
 
 export type RedirectEndpoints = typeof redirectEndpoints[number]
