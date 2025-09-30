@@ -9,15 +9,13 @@ async function sendTelegramMensage(message: string): Promise<void> {
 
   const apiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`
 
-  console.log(process.env.TELEGRAM_CHAT_ID)
   const chat_id = process.env.TELEGRAM_CHAT_ID
 
   try {
     const response = await axios.post(apiUrl, {
         chat_id,
         text: message,
-      });
-    // const responseData = await response.data
+      })
 
     if (response.data.ok) {
       console.log('message enviada com sucesso.')
@@ -26,6 +24,7 @@ async function sendTelegramMensage(message: string): Promise<void> {
     }
   } catch (error:any) {
     console.error('Erro na requisição:', error.message)
+    if(process.env.IS_DEV != "true") throw new Error(`Erro na requisição: ${error.message}`)
   }
 }
 

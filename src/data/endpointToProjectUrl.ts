@@ -1,10 +1,10 @@
 import type { RedirectEndpoints } from "../types/endpoints.js";
 
 export const endpointToProjectUrl: Record<RedirectEndpoints, string> = {
-    myPortfolioEn: "https://my-portfolio-lyart-pi-90.vercel.app/en",
-    myPortfolioPt: "https://my-portfolio-lyart-pi-90.vercel.app/pt",
-    myPortfolioEs: "https://my-portfolio-lyart-pi-90.vercel.app/es",
-    myPortfolioDe: "https://my-portfolio-lyart-pi-90.vercel.app/de",
+    myPortfolioEn: "https://victor-spichenkoff.vercel.app/en",
+    myPortfolioPt: "https://victor-spichenkoff.vercel.app/pt",
+    myPortfolioEs: "https://victor-spichenkoff.vercel.app/es",
+    myPortfolioDe: "https://victor-spichenkoff.vercel.app/de",
     million: "https://million-show.vercel.app",
     paginationApi: "https://test-pagination-eight.vercel.app",
     serverMaintenance: "https://server-maintenance-page.vercel.app",
