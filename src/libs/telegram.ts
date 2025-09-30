@@ -4,8 +4,10 @@ const telegramBotToken = '6746265132:AAHesfWPU4GGxYyWqnbDZSriNnkFcbRFi0E'
 
 async function sendTelegramMensage(message: string): Promise<void> {
   // await new Promise((resolve)=>setTimeout(resolve, 5000))
-  if(process.env.NOT_SEND_TO_TELEGRAM=="true") 
+  if(process.env.NOT_SEND_TO_TELEGRAM=="true") {
+throw new Error("MESSAGE NOT SENT")
     return console.log(`================\n${message}\n================`)
+  }
 
   const apiUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`
 
@@ -17,6 +19,7 @@ async function sendTelegramMensage(message: string): Promise<void> {
         text: message,
       })
 
+      throw new Error("MESSAGE SENT")
     if (response.data.ok) {
       console.log('message enviada com sucesso.')
     } else {
