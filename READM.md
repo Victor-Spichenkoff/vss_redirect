@@ -24,3 +24,12 @@
     - /alert/:projectName?isCv
 - extra:
     - /alert/:projectName?extra=123123
+
+
+# Examples
+[tests](https://vss-redirect.vercel.app/tests)
+
+[portfolio/pt](https://my-portfolio-lyart-pi-90.vercel.app/pt)
+
+[portfolio+redirect](https://vss-redirect.vercel.app/myPortfolioPt)
+    

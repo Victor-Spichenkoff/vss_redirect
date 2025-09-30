@@ -3,6 +3,7 @@ import axios from 'axios'
 const telegramBotToken = '6746265132:AAHesfWPU4GGxYyWqnbDZSriNnkFcbRFi0E'
 
 async function sendTelegramMensage(message: string): Promise<void> {
+  // await new Promise((resolve)=>setTimeout(resolve, 5000))
   if(process.env.NOT_SEND_TO_TELEGRAM=="true") 
     return console.log(`================\n${message}\n================`)
 

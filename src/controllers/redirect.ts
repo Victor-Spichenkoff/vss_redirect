@@ -1,7 +1,7 @@
 import type { Request, Response } from "express"
 import { endpointToProjectUrl } from "../data/endpointToProjectUrl.js"
 import { sendTelegramMensage } from "../libs/telegram.js"
-import { isRedirectEndpoint } from "../types/endpoints.js"
+import { isRedirectEndpoint, type RedirectEndpoints } from "../types/endpoints.js"
 import { getInfosFromIp, getRequesterId } from "../libs/ip.js"
 import { messageFormatter } from "../utils/messageFormatter.js"
 import { telegramSigns } from "../data/telegramSign.js"
@@ -29,19 +29,46 @@ export const redirectController = async (req: Request, res: Response) => {
     else if (query.isPort != undefined)
         header = telegramSigns.redirectFromPort
 
-    const ipInfos = await getInfosFromIp(ip ?? "")
+    const extra = JSON.stringify(query.extra)
 
-    const message = messageFormatter.formatRedirect({
+    setImmediate(() => {
+        parallelProcess({
             header,
             ip: ip ?? "NONE",
-            projectName: endpointToProjectName[projectName], 
-            ipInfos: `${ipInfos?.city}, ${ipInfos?.country_name} `,
-            extra: JSON.stringify(query.extra)
-        })
+            projectName,
+            req,
+            extra
+        }).catch(console.error);
+    });
 
-    sendTelegramMensage(message)
 
     if (process.env.NO_REDIRECT == "true")
         return res.send(dest)
     res.status(301).redirect(dest)
 }
+
+
+interface ParallelProcessProps {
+    req: Request,
+    projectName: RedirectEndpoints
+    header: string,
+    ip: string
+    extra?: string
+}
+
+const parallelProcess = async ({header, ip, projectName, req, extra}: ParallelProcessProps) => {
+
+
+    const ipInfos = await getInfosFromIp(ip ?? "")
+
+    const message = messageFormatter.formatRedirect({
+        header,
+        ip,
+        projectName: endpointToProjectName[projectName],
+        ipInfos: `${ipInfos?.city}, ${ipInfos?.country_name} `,
+        extra : extra ?? "",
+    })
+
+    //never use 
+    sendTelegramMensage(message)
+} 
