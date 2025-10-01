@@ -32,14 +32,14 @@ export const redirectController = async (req: Request, res: Response) => {
     const extra = JSON.stringify(query.extra);
 
     //don't work at vercel
-    // setImmediate(() => {
-        // parallelProcess({
-        //     header,
-        //     ip: ip ?? "NONE",
-        //     projectName,
-        //     extra
-        // }).catch(console.error);
-    // });
+    setImmediate(async () => {
+        await parallelProcess({
+            header,
+            ip: ip ?? "NONE",
+            projectName,
+            extra
+        }).catch(console.error);
+    });
 
     // (async() => {
     //     await parallelProcess({
@@ -51,12 +51,12 @@ export const redirectController = async (req: Request, res: Response) => {
     // })()
 
 
- await parallelProcess({
-            header,
-            ip: ip ?? "NONE",
-            projectName,
-            extra
-        })
+//  await parallelProcess({
+//             header,
+//             ip: ip ?? "NONE",
+//             projectName,
+//             extra
+//         })
 
     if (process.env.NO_REDIRECT == "true")
         return res.send(dest)
