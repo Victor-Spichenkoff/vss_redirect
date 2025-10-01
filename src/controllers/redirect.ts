@@ -51,25 +51,16 @@ export const redirectController = async (req: Request, res: Response) => {
     //     })()
 
 
-    //  await parallelProcess({
-    //             header,
-    //             ip: ip ?? "NONE",
-    //             projectName,
-    //             extra
-    //         })
+     await parallelProcess({
+                header,
+                ip: ip ?? "NONE",
+                projectName,
+                extra
+            })
 
     if (process.env.NO_REDIRECT == "true")
         return res.send(dest)
     res.status(301).redirect(dest)
-
-    res.on("finish", () => {
-        parallelProcess({
-            header,
-            ip: ip ?? "NONE",
-            projectName,
-            extra
-        }).catch(console.error);
-    });
 }
 
 
