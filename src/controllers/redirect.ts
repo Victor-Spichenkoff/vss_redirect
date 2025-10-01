@@ -37,7 +37,6 @@ export const redirectController = async (req: Request, res: Response) => {
         //     header,
         //     ip: ip ?? "NONE",
         //     projectName,
-        //     req,
         //     extra
         // }).catch(console.error);
     // });
@@ -47,7 +46,6 @@ export const redirectController = async (req: Request, res: Response) => {
             header,
             ip: ip ?? "NONE",
             projectName,
-            req,
             extra
         }).catch(console.error);
     })()
@@ -59,14 +57,13 @@ export const redirectController = async (req: Request, res: Response) => {
 
 
 interface ParallelProcessProps {
-    req: Request,
     projectName: RedirectEndpoints
     header: string,
     ip: string
     extra?: string
 }
 
-const parallelProcess = async ({ header, ip, projectName, req, extra }: ParallelProcessProps) => {
+const parallelProcess = async ({ header, ip, projectName, extra }: ParallelProcessProps) => {
 
 
     const ipInfos = await getInfosFromIp(ip ?? "")
