@@ -31,15 +31,23 @@ export const redirectController = async (req: Request, res: Response) => {
 
     const extra = JSON.stringify(query.extra)
 
-    setImmediate(() => {
-        parallelProcess({
-            header,
-            ip: ip ?? "NONE",
-            projectName,
-            req,
-            extra
-        }).catch(console.error);
-    });
+    // setImmediate(() => {
+    //     parallelProcess({
+    //         header,
+    //         ip: ip ?? "NONE",
+    //         projectName,
+    //         req,
+    //         extra
+    //     }).catch(console.error);
+    // });
+
+    await parallelProcess({
+        header,
+        ip: ip ?? "NONE",
+        projectName,
+        req,
+        extra
+    })
 
 
     if (process.env.NO_REDIRECT == "true")
@@ -56,7 +64,7 @@ interface ParallelProcessProps {
     extra?: string
 }
 
-const parallelProcess = async ({header, ip, projectName, req, extra}: ParallelProcessProps) => {
+const parallelProcess = async ({ header, ip, projectName, req, extra }: ParallelProcessProps) => {
 
 
     const ipInfos = await getInfosFromIp(ip ?? "")
@@ -66,9 +74,9 @@ const parallelProcess = async ({header, ip, projectName, req, extra}: ParallelPr
         ip,
         projectName: endpointToProjectName[projectName],
         ipInfos: `${ipInfos?.city}, ${ipInfos?.country_name} `,
-        extra : extra ?? "",
+        extra: extra ?? "",
     })
 
     //never use 
-    sendTelegramMensage(message)
+    await sendTelegramMensage(message)
 } 
