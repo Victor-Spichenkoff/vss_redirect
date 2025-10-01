@@ -41,22 +41,22 @@ export const redirectController = async (req: Request, res: Response) => {
     //         }).catch(console.error);
     //     });
 
-    //     (async() => {
-    //         await parallelProcess({
-    //             header,
-    //             ip: ip ?? "NONE",
-    //             projectName,
-    //             extra
-    //         }).catch(console.error);
-    //     })()
-
-
-     await parallelProcess({
+        (async() => {
+            await parallelProcess({
                 header,
                 ip: ip ?? "NONE",
                 projectName,
                 extra
-            })
+            }).catch(console.error);
+        })()
+
+
+    //  await parallelProcess({
+    //             header,
+    //             ip: ip ?? "NONE",
+    //             projectName,
+    //             extra
+    //         })
 
     if (process.env.NO_REDIRECT == "true")
         return res.send(dest)
