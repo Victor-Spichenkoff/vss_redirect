@@ -29,8 +29,9 @@ export const redirectController = async (req: Request, res: Response) => {
     else if (query.isPort != undefined)
         header = telegramSigns.redirectFromPort
 
-    const extra = JSON.stringify(query.extra)
+    const extra = JSON.stringify(query.extra);
 
+    //don't work at vercel
     // setImmediate(() => {
         // parallelProcess({
         //     header,
@@ -50,15 +51,6 @@ export const redirectController = async (req: Request, res: Response) => {
             extra
         }).catch(console.error);
     })()
-
-    // await parallelProcess({
-    //     header,
-    //     ip: ip ?? "NONE",
-    //     projectName,
-    //     req,
-    //     extra
-    // })
-
 
     if (process.env.NO_REDIRECT == "true")
         return res.send(dest)
