@@ -1,6 +1,9 @@
 # Redirect VSS
 - Add loggers to my projects to keep a better tracing
 
+- base:        https://vss-hub.vercel.app/
+- alert base:  https://vss-hub.vercel.app/alert/
+
 ## Avaliable
 - Redirect:
     /[one_of_these]
