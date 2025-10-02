@@ -12,4 +12,6 @@ export const endpointToProjectName: Record<RedirectEndpoints, string> = {
     tests: "TEST",
     ticTacToe: "Online Tic Tac Toe",
     vssExpress: "VSS Express",
+    github: "GitHub",
+    linkedin: "LinkedIn"
 }

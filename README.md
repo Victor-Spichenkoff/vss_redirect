@@ -20,6 +20,8 @@
 - ticTacToe
 - vssExpress
 - portfioShare
+- github
+- linkedin
 - tests  
 
 # Query
