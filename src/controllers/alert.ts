@@ -17,14 +17,15 @@ export const alertControleer = async (req: Request, res: Response) => {
     const ip = getRequesterId(req)
     const ipInfos = await getInfosFromIp(ip ?? "")
 
-    const message = messageFormatter.formatRedirect({
+    const message = messageFormatter.formatForAlert({
         header,
         ip: ip ?? "NONE",
         ipInfos: `${ipInfos?.city}, ${ipInfos?.country_name} `,
         projectName: endpointToProjectName[projectName],
         extra: JSON.stringify(extra) ?? ""
     })
-    sendTelegramMensage(message)
+
+    await sendTelegramMensage(message)
 
     res.send("ok")
 }

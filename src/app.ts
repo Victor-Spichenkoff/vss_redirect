@@ -17,7 +17,6 @@ app.use(express.json())
 //router
 app.use(mainRouter)
 
-
 const port = process.env.PORT || 2006
 
 app.listen(port, ()=> {

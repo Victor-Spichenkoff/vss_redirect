@@ -7,7 +7,7 @@ export const endpointToProjectName: Record<RedirectEndpoints, string> = {
     myPortfolioDe: "MY Portfolio [DE]",
     million: "Million Show",
     paginationApi: "Pagination API",
-    portfioShare: "Portfolio Share",
+    portfoliosShare: "Portfolio Share",
     serverMaintenance: "Server Maintenance",
     tests: "TEST",
     ticTacToe: "Online Tic Tac Toe",

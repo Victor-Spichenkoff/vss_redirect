@@ -8,7 +8,7 @@ export const redirectEndpoints = [
     "serverMaintenance",
     "ticTacToe",
     "vssExpress",
-    "portfioShare",
+    "portfoliosShare",
     "github",
     "linkedin",
     "tests"

@@ -19,7 +19,7 @@
 - serverMaintenance
 - ticTacToe
 - vssExpress
-- portfioShare
+- portfoliosShare
 - github
 - linkedin
 - tests  
@@ -31,6 +31,9 @@
     - /alert/:projectName?extra=123123
 
 
+# ALERT CALL
+- src/util/_serviceCallUs -> everything you will need to build it
+
 # Examples
 [tests](https://vss-redirect.vercel.app/tests)
 
@@ -38,3 +41,8 @@
 
 [portfolio+redirect](https://vss-redirect.vercel.app/myPortfolioPt)
     
+
+
+# Usages
+- The alert call in every project
+- use redirect on portflio, it will already start API with the alert call, so can use redirect + isPort
