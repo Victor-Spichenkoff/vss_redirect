@@ -42,6 +42,10 @@
 [portfolio+redirect](https://vss-redirect.vercel.app/myPortfolioPt)
     
 
+# IP
+- Works well with redirect
+- Need to send if using alert (get locally)
+
 
 # Usages
 - The alert call in every project

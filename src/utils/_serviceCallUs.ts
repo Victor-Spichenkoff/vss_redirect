@@ -15,7 +15,7 @@ export const redirectEndpoints = [
     "github",
     "linkedin",
     "tests"
-] as const//TODO: CHECK IF UPDATE
+] as const//TODO: CHECK IF It Was UPDATED
 
 export type RedirectEndpoints = typeof redirectEndpoints[number]
 
@@ -35,6 +35,7 @@ export const getRedirectUrl = (endpoint: RedirectEndpoints, extra?: string) => {
 
 
 export const alertAccessToRedirectApi = async () => {
+    
     await axios.get(getUrlAlertUrl("tests"))//TODO: change, can have extra
 }
 

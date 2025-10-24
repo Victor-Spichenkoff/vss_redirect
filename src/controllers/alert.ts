@@ -16,11 +16,12 @@ export const alertControleer = async (req: Request, res: Response) => {
     let header = telegramSigns.alert 
     const ip = getRequesterId(req)
     const ipInfos = await getInfosFromIp(ip ?? "")
+    console.log(ipInfos)
 
     const message = messageFormatter.formatForAlert({
         header,
         ip: ip ?? "NONE",
-        ipInfos: `${ipInfos?.city}, ${ipInfos?.country_name} `,
+        ipInfos: `${ipInfos?.city}, ${ipInfos?.country} `,
         projectName: endpointToProjectName[projectName],
         extra: JSON.stringify(extra) ?? ""
     })

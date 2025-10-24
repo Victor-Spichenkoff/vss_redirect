@@ -4,6 +4,7 @@ import { alertControleer } from '../controllers/alert.js'
 const router = Router()
 
 router.get("/", (req, res) => res.send("Hello!"))
+router.get("/teste", (req, res) => res.send("Testado!"))
 router.get("/test", (req, res) => res.send("Testado!"))
 
 router.get('/alert/:projectName', alertControleer)
